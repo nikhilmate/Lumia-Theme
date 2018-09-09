@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Web - My Lumia!</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 360px;
+      height: 500px;
+      background: grey;
+      display: flex;
+      justify-content: center;
+    }
+
+    .strip {
+      width: 360px;
+      position: relative;
+      background: blue;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="static">
+        <div class="strip hide-strip">$ - $</div>
+    </header>
+    </div>
+
+    <script type="text/javascript">
+      let strip = document.querySelector('.strip');
+      let container = document.querySelector('.container');
+      function add(e) {
+        container.addEventListener('mousemove', min);
+      }
+      function min(ev) {
+        console.log(ev);
+        strip.style.marginTop = `${ev.offsetY}px`;
+      }
+      function debounce(func, wait = 20, immediate = true) {
+        var timeout;
+        return function () {
+          var context = this, args = arguments;
+          var later = function () {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+          };
+          var callnow = immediate && !timeout;
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+          if (callnow) func.apply(context, args);
+        };
+      };
+      strip.addEventListener('mousedown', add);
+    </script>
+</body>
+
+</html>

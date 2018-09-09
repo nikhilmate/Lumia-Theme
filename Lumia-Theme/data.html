@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Web - My Lumia!</title>
+  <style>
+    .menu, .linee {cursor: pointer; background: black;}
+
+    .menu.over{background-color:rgba(255,255,255,0.8);}
+
+    .menu {transition: all 0.40s ease-out; width:60px; height:30px; cursor:pointer; position:absolute; right:0; top:0; z-index:5; border-radius:100%;}
+
+    .over {transform: scale(100);transition: all 0.350s ease-in;cursor: default;}
+
+    .linea1 {background: #222222;height: 2px;width: 15px;position: absolute;right: 33px;top: 33px;z-index:90;transition: all 0.3s;opacity:0}
+
+    .linea1.overL1,.linea3.overL3{opacity:1}
+
+    .linea2 {background: #222222;height: 2px;width: 15px;position: absolute;right: 33px;top: 38px;opacity: 1;transition: opacity 0.5s;z-index:90;opacity:0}
+
+    .linea3 {background: #222222;height: 2px;width: 15px;position: absolute;right: 33px;top: 43px;z-index:90;opacity:0}
+
+    .overL1 {animation: closetop 1s forwards;animation-direction: alternate;cursor: pointer;}
+
+    .overL2 {opacity: 0;transition: opacity 0.5s;cursor: pointer;}
+
+    .overL3 {animation: closebottom 1s forwards;animation-direction: alternate;cursor: pointer;}
+
+    @keyframes closetop {
+
+    0% {transform: translateY(5px) rotate(0deg);}
+
+    25% {transform: translateY(5px) rotate(0deg);}
+
+    75% {transform: translateY(5px) rotate(-45deg);}
+
+    100% {transform: translateY(5px) rotate(-45deg);}
+
+    }
+    @keyframes closebottom {
+
+    0% {transform: translateY(0px) rotate(0deg);}
+
+    25% {transform: translateY(-5px) rotate(0deg);}
+
+    75% {transform: translateY(-5px) rotate(45deg);}
+
+    100% {transform: translateY(-5px) rotate(45deg);}
+
+    }
+
+  </style>
+</head>
+
+<body>
+    <div id="menu" class="menu"></div>
+    <p>menu</p>
+    <div class="cross"> 
+        <span class="linee linea1"></span> 
+        <span class="linee linea2"></span> 
+        <span class="linee linea3"></span> 
+    </div>
+</body>
+<script src="jquery.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.menu , .linee').on('click', function() {
+
+      $('.menu').toggleClass('over')
+
+      $('.linea1').toggleClass('overL1')
+
+      $('.linea2').toggleClass('overL2')
+
+      $('.linea3').toggleClass('overL3')
+
+      $('.main-menu').toggleClass('overmain')
+
+      
+
+    });
+    });
+</script>
+</html>

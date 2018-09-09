@@ -1,0 +1,247 @@
+html {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: .7px;
+  background: linear-gradient(145deg, rgba(253, 7, 48, 0.993) 0%, rgb(106, 4, 119) 100%);
+  background-attachment: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+*, *:after, *:before {
+ box-sizing: inherit;
+}
+
+body {
+  width: 360px;
+  height: 600px;
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+}
+
+body.fade .container * {
+  animation-name: fade;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+@keyframes fade {
+  0% {transform: translate(0px, 0px);}
+  100% {transform: translate(-400px, 0px);}
+}
+body .container .viewport *.selected,
+body .container .small-pin-container *.selected,
+body .container .big-pin-container *.selected {
+  opacity: 0;
+  animation-delay: 1s;
+  animation: fadeup 1s ease-out;
+}
+@keyframes fadeup {
+  to {opacity: 0;}
+  from {opacity: 1;}
+}
+
+.UI {
+  padding: 15px;
+  padding-top: 0;
+  width: 360px;
+  overflow-y: auto;
+  height: 600px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  position: fixed;
+  background: black;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.6);
+}
+.UI::-webkit-scrollbar { 
+  display: none; 
+}
+.container::-webkit-scrollbar { 
+  display: none; 
+}
+.container {
+  background: transparent;
+  scroll-behavior: smooth;
+  height: 100%;
+  overflow-y: auto;
+  cursor: pointer;
+}
+header {
+  width: calc(360px - 34px);
+  position: fixed;
+  overflow-y: hidden;
+  height: 16px;
+  z-index: 500;
+}
+header.added {
+  height: auto;
+}
+header .static {
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  width: calc(360px - 34px);
+  height: 16px;
+  overflow-y: hidden;
+  z-index: 500;
+}
+.static span {
+  padding-right: 5px;
+  font-size: 14px;
+  color: white;
+}
+.static span.right {
+  float: right;
+  padding-right: 0;
+
+}
+header .slider {
+  display: block;
+  opacity: 1;
+  transform: translateY(50px);
+  position: relative;
+  height: auto;
+  margin: 5px;
+  z-index: 400;
+  background: purple;
+}
+.hide-slider {
+  opacity: 0;
+  display: none;
+}
+.strip {
+  display: block;
+  opacity: 1;
+  width: 100%;
+  background: blue;
+  text-align: center;
+  margin-left: -35px;
+  color: white;
+  height: 10px;
+  font-size: 8px;
+  position: relative;
+  transition: all .5s ease-out;
+}
+.hide-strip {
+  display: none;
+  opacity: 0;
+}
+.viewport {
+  margin-top: 20px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.pin {
+  color: white;
+  padding: 5px;
+  align-items: flex-end;
+  justify-content: left;
+  display: inline-flex;
+  margin: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  width: calc((360px - 43px)/ 2);
+  height: 170px;
+  border: 1px solid transparent;
+  transition: border .6s ease;
+}
+.pin.small-pin-container:hover {
+  border: none;
+}
+.pin:hover {
+  border: 1px solid white;
+}
+.big-pin-container {
+  margin-top: 4px;
+  display: grid;
+  grid-template-columns: 324px 1fr;
+}
+.big-pin {
+  padding: 5px;
+  justify-content: left;
+  align-items: flex-end;
+  display: inline-flex;
+  margin: 0;
+  background: grey;
+  width: calc(360px - 35px);
+  height: 170px;
+  border : 1px solid transparent;
+  transition: border .6s ease;
+}
+.big-pin:hover {
+  border: 1px solid white;
+}
+.pin span {
+  margin: 0;
+  padding: 0;
+}
+.pin-null {
+  background: transparent;
+}
+.small-pin-container {
+  border: none;
+  outline: none;
+  background: transparent !important;
+  display: grid;
+  margin: 0;
+  grid-template-columns: repeat(2, 1fr);
+}
+.small-pin {
+  height: calc((170px / 2) - 4px);
+  width: calc((((360px - 43px)/ 2) / 2) - 4px);
+  background: grey;
+  margin: 4px;
+  transition: all .6s ease;
+}
+.small-pin:hover {
+  border: 1px solid white;
+}
+.small-pin:first-child {
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+.small-pin:nth-child(2) {
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+.small-pin:nth-child(3) {
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+.small-pin:nth-child(4) {
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+.small-pin:nth-child(2n) {
+  margin-right: -1px;
+
+}
+.small-pin:nth-child(2n-1) {
+  margin-left: -1px;
+}
+.pin:nth-child(2n-1) {
+  margin-left: 0;
+}
+.pin:nth-child(2n) {
+  margin-right: 0;
+}
+.list {
+  padding: 10px;
+  padding-right: 0;
+  height: 40px;
+}
+.arrow-right {
+  float: right;
+  color: white;
+  border-radius: 50%;
+  border: 1px solid white;
+  text-align: center;
+  padding: 5px;
+  height: 28px;
+  transition: border .2s ease;
+}
+.arrow-right:hover {
+  border : 2px solid white;
+}
